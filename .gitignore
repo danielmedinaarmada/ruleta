@@ -1,0 +1,7 @@
+#Ignore directore de examples
+js/examples
+
+#Ignore files
+LICENSE
+README.MD
+Winwheel.js

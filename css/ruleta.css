@@ -1,0 +1,61 @@
+html, body{
+  height: 100vh;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.title{
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  align-items: end;
+  height: 20vh;
+}
+
+h1, h3, ul, li, p {
+  margin: 0px;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 15px;
+}
+
+
+li{
+  font-size: 15px;
+}
+
+.ruleta{
+  display: flex;
+}
+
+.left {
+  border: 1px solid black;
+  height: 60vh;
+  width: 60%;
+}
+
+
+.right {
+  border: 1px solid black;
+  height: 60vh;
+  width: 40%;
+}
+
+
+.puntos{
+  border: 1px solid black;
+}
+
+.preguntas{
+  border: 1px solid black;
+}
+
+.ayuda {
+  height: 15vh;
+  font-size: 15px;
+}

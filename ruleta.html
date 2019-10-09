@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Ruleta - Accidentes Personales</title>
   <script src="js/Winwheel.min.js"></script>
+  <script src="js/TweenMax.min.js"></script>
+  <script src='js/ruleta.js'></script>
   <link rel="stylesheet" type="text/css" href="css/ruleta.css">
 </head>
 <body>
@@ -16,7 +18,10 @@
   <div class='ruleta'>
     <div class='left'>
       <h3>Ruleta de la suerte.</h3>
-      <p>cc</p>
+      <canvas id='canvas' height="400" width="400">
+        Canvas not supported, use another browser.
+      </canvas>
+      <button type='button' id='btnEmpezar' value='Girar' onclick="empezarJuego()">Empezar a jugar!</button>
     </div>
     <div class='right'>
       <div class= 'puntos'>
@@ -26,7 +31,7 @@
       </div>
 
       <div class='preguntas'>
-        <h3>Preguntas:</h3>
+        <h3>Pregunta:</h3>
         <p> adad</p>
       </div>
 

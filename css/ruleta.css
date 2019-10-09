@@ -37,8 +37,19 @@ li{
   border: 1px solid black;
   height: 60vh;
   width: 60%;
+  display: block;
 }
 
+canvas {
+  margin: auto;
+  padding: 0;
+  display: block;
+  border: 1px solid blue;
+}
+
+.btnEmpezar{
+
+}
 
 .right {
   border: 1px solid black;

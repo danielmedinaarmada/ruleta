@@ -1,29 +1,20 @@
 html, body{
-  height: 100vh;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin: 0 0 0 20px;
 }
 
-.title{
-  padding: 0px;
-  margin: 0px;
-  display: flex;
-  align-items: end;
-  height: 20vh;
+.logo {
+  display: block;
+  height: 50px; 
+}
+
+h1, h3 {
+  font-size: 15px;
 }
 
 h1, h3, ul, li, p {
   margin: 0px;
+  padding: 5px 15px;
 }
-
-h1 {
-  font-size: 20px;
-}
-
-h3 {
-  font-size: 15px;
-}
-
 
 li{
   font-size: 15px;
@@ -31,20 +22,18 @@ li{
 
 .ruleta{
   display: flex;
+  height: 90%;
 }
 
 .left {
   border: 1px solid black;
-  height: 60vh;
-  width: 60%;
+  width: 40%;
   display: block;
 }
 
 canvas {
-  margin: auto;
   padding: 0;
   display: block;
-  border: 1px solid blue;
 }
 
 .btnEmpezar{
@@ -53,20 +42,23 @@ canvas {
 
 .right {
   border: 1px solid black;
-  height: 60vh;
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
 
 .puntos{
   border: 1px solid black;
+  padding: 5px;
 }
 
 .preguntas{
   border: 1px solid black;
+  padding: 5px;
 }
 
 .ayuda {
-  height: 15vh;
   font-size: 15px;
+  padding: 5px;
 }

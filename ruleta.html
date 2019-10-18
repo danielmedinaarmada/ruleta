@@ -12,44 +12,51 @@
   
   <div class='title'>
     <img class='logo' src="http://farm9.staticflickr.com/8118/8691670535_fb71901f0a.jpg">
-    <h1>Ruleta - Accidentes Personales</h1>
   </div>
 
   <div class='ruleta'>
+
     <div class='left'>
-      <h3>Ruleta de la suerte.</h3>
-      <canvas id='canvas' height="400" width="400">
+      <h1>Ruleta para Accidentes Personales.</h1>
+      <canvas id='WinWheel' height="512" width="512">
         Canvas not supported, use another browser.
       </canvas>
-      <button type='button' id='btnEmpezar' value='Girar' onclick="empezarJuego()">Empezar a jugar!</button>
+      <button type='button' id='btnEmpezar' value='Girar' onclick="theWheel.startAnimation();">Girar!</button>
     </div>
+
     <div class='right'>
+
+      <div class='ayuda'>
+        <h3>Reglas:</h3>
+        <ul>
+          <li>Gire la rueba para que se le haga una pregunta.</li>
+          <li>Por cada pregunta que responda de forma correcta ganara puntos</li>
+          <li>Por cada pregunta que responda de forma incorrecta se le sumara una pregunta</li>
+          <li>Luego de cada pregunta la rueva gira automaticamente</li>
+          <li>Con 5 preguntas respondidas correctamente ganas.</li>
+          <li>Con 5 preguntas respondidas incorrectamente pierde.</li>
+          <li>Acepte el reto y complete los 5 aciertos. </li>
+        </ul>
+      </div>
+
       <div class= 'puntos'>
         <h3>Puntos:</h3>
-        <ul>PuntosGenerados:</ul>
-        <ul>Nuevos Acumulados:</ul>
+        <ul>
+          <li>Acertadas:</li>
+          <li>Perdidas :</li>
+        </ul>
       </div>
 
       <div class='preguntas'>
         <h3>Pregunta:</h3>
-        <p> adad</p>
+        <p> Preguns</p>
       </div>
-
     </div>
 
 
   </div>
 
 
-  <div class='ayuda'>
-    <h3>Ayuda</h3>
-    <ul>
-      <li>Responda la Pregunta en el planes de retos</li>
-      <li>Por cada pregunta que responda de forma correcta ganara puntos</li>
-      <li>Acepte el reto y complete las 5 preguntas </li>
-    </ul>
-
-  </div>
   
 </body>
 </html>

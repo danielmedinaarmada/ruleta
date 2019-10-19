@@ -21,15 +21,11 @@
       <canvas id='WinWheel' height="512" width="512">
         Canvas not supported, use another browser.
       </canvas>
-      <button type='button' id='btnEmpezar' value='Girar' onclick="theWheel.startAnimation();">Girar!</button>
-    </div>
-
-    <div class='right'>
-
-      <div class='ayuda'>
+    
+      <div id='ayuda' class='ayuda'>
         <h3>Reglas:</h3>
         <ul>
-          <li>Gire la rueba para que se le haga una pregunta.</li>
+          <li>La rueda girara y realizara una pregunta aleatoria.</li>
           <li>Por cada pregunta que responda de forma correcta ganara puntos</li>
           <li>Por cada pregunta que responda de forma incorrecta se le sumara una pregunta</li>
           <li>Luego de cada pregunta la rueva gira automaticamente</li>
@@ -37,7 +33,14 @@
           <li>Con 5 preguntas respondidas incorrectamente pierde.</li>
           <li>Acepte el reto y complete los 5 aciertos. </li>
         </ul>
+        <button type='button' id='btnEmpezar' value='Girar' onclick="empezarJuego();">Empezar a Jugar</button>
       </div>
+
+    </div>
+
+    <div class='right'>
+
+
 
       <div class= 'puntos'>
         <h3>Puntos:</h3>

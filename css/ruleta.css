@@ -2,18 +2,23 @@ html, body{
   margin: 0 0 0 20px;
 }
 
+.hide {
+  display: none;
+}
+
 .logo {
   display: block;
   height: 50px; 
+  margin-bottom: 10px;
 }
 
 h1, h3 {
   font-size: 15px;
+  padding-top: 10px;
 }
 
 h1, h3, ul, li, p {
   margin: 0px;
-  padding: 5px 15px;
 }
 
 li{
@@ -26,9 +31,19 @@ li{
 }
 
 .left {
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   width: 40%;
   display: block;
+  position: relative;
+}
+
+.left canvas, .ayuda {
+  position: absolute;
+}
+
+.ayuda {
+  font-size: 15px;
+  padding: 5px;
 }
 
 canvas {
@@ -36,12 +51,8 @@ canvas {
   display: block;
 }
 
-.btnEmpezar{
-
-}
-
 .right {
-  border: 1px solid black;
+/*  border: 1px solid black;*/
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -49,16 +60,11 @@ canvas {
 
 
 .puntos{
-  border: 1px solid black;
+/*  border: 1px solid black;*/
   padding: 5px;
 }
 
 .preguntas{
-  border: 1px solid black;
-  padding: 5px;
-}
-
-.ayuda {
-  font-size: 15px;
+/*  border: 1px solid black;*/
   padding: 5px;
 }

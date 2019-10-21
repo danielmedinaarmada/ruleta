@@ -30,7 +30,11 @@ class Juego {
       },
       'pins' : {
         'number' : 15
-      }
+      },
+        // To do something after the animation has finished specify callback function
+        'callbackFinished' : this.winAnimation(),
+        //During  the animation need  to call function to re-draw triangle
+        'callbackAfter' : this.drawImage()
     })
   }
   
@@ -60,13 +64,37 @@ class Juego {
   }
 
   girar(){
+    this.drawImage()
     this.theWheel.startAnimation()
+  }
+
+  // This function called after the spin animation has stopped
+  winAnimation(){
+    this.drawImage()  
+  }
+
+  drawImage(){
+
+    let canvas = document.getElementById('WinWheel')
+    let ctx = canvas.getContext('2d')
+
+    let img = new Image()
+    img.src = 'img/basic_pointer.png'
+    
+    img.onload = function(){
+      if (ctx){
+        ctx.drawImage(img, 100, 10)       //Draw the iimage at the specified x and y
+      }
+    }
+
+    
+
   }
 
 }
 
 
 
-function empezarJuego(){
-  var juego = new Juego()
+function empezarJuego(){ 
+  window.juego = new Juego()
 }

@@ -1,122 +1,120 @@
 class Juego {
 
   constructor(){
+    this.cantidad = 5
     this.divAyuda = document.getElementById('ayuda')
     this.divPreguntas = document.getElementById('preguntas')
     this.divPuntos = document.getElementById('puntos')
     this.toggleDivAyuda()
-    this.toggleDivPreguntas()
     this.toggleDivPuntos()
     this.inicializar()
     this.theWheel.startAnimation()
     this.audio = new Audio("audios/tick.mp3")
     this.preguntas = [
       {
-        pregunta: "¿Cobertura básica de póliza Accidentes Personales?",
-        img: "img/accidentePersonal.png",
-        respuestas: [
-          {opcion1: "Maternidad, Enfermería y Cirugia", valor: false, img: "" },
-          {opcion2: "Primeros Auxilios", valor: false, img: "" },
-          {opcion3: "Incendio, Robo e Inundación", valor: false, img: "" },
-          {opcion4: "Urgencias, Medicina preventiva y Urgencias", valor: false, img: "" },
-          {opcion5: "Muerte accidental, invalidez total y permanente y gastos médicos", valor: true, img: "" }
-        ]
-      },{
-        pregunta: "¿Qué debemos validar antes de afiliar a un cliente en Accidentes Personales sobre la persona a asegurar?",
+        pregunta: "¿Suma de 0 + 1?",
         img: "img/validar.png",
         respuestas: [
-          {opcion1: "Edad comprendida 18-64 años, sexo y estudios", valor: false, img: "" },
-          {opcion2: "Ocupación, estudios y dirección", valor: false, img: "" },
-          {opcion3: "Datos personales, contacto", valor: false, img: "" },
-          {opcion4: "Experiencia Laboral, Estudios y Edad comprendida 18-64 años", valor: false, img: "" },
-          {opcion5: "Edad comprendida 18-64 años, ocupación asegurable, gozar de buena Salud.", valor: true, img: "" }
+          {opcion: 6, valor: false, img: "" },
+          {opcion: 2, valor: false, img: "" },
+          {opcion: 1, valor: true, img: "" },
+          {opcion: 4, valor: false, img: "" },
+          {opcion: 5, valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Cual de los siguientes opciones NO es beneficios o ventajas de Accidentes Personales?",
+        pregunta: "¿Suma de 0 + 2?",
         img: "img/validar.png",
         respuestas: [
-          {opcion1: "Cobertura 24h-365 días del año", valor: false, img: "" },
-          {opcion2: "Gastos médicos por evento", valor: false, img: "" },
-          {opcion3: "No cancela deducible", valor: false, img: "" },
-          {opcion4: "Cubre accidentes personales por invalidez total y permanente", valor: false, img: "" },
-          {opcion5: "Cubre los gastos de Maternidad.", valor: true, img: "" }
+          {opcion: 1, valor: false, img: "" },
+          {opcion: 2, valor: true, img: "" },
+          {opcion: 3, valor: false, img: "" },
+          {opcion: 4, valor: false, img: "" },
+          {opcion: 5, valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 0 + 1",
+        pregunta: "¿Suma de 0 + 3?",
         img: "img/validar.png",
         respuestas: [
-          {opcion1: "1", valor: true, img: "" },
-          {opcion2: "2", valor: false, img: "" },
-          {opcion3: "3", valor: false, img: "" },
-          {opcion4: "4", valor: false, img: "" },
-          {opcion5: "5.", valor: false, img: "" }
+          {opcion: 1, valor: false, img: "" },
+          {opcion: 2, valor: false, img: "" },
+          {opcion: 3, valor: true, img: "" },
+          {opcion: 4, valor: false, img: "" },
+          {opcion: 5, valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 1 + 1",
+        pregunta: "¿Suma de 0 + 4?",
         img: "img/validar.png",
         respuestas: [
-          {opcion1: "1", valor: false, img: "" },
-          {opcion2: "2", valor: true, img: "" },
-          {opcion3: "3", valor: false, img: "" },
-          {opcion4: "4", valor: false, img: "" },
-          {opcion5: "5.", valor: false, img: "" }
+          {opcion: 1, valor: false, img: "" },
+          {opcion: 2, valor: false, img: "" },
+          {opcion: 3, valor: false, img: "" },
+          {opcion: 4, valor: true, img: "" },
+          {opcion: 5, valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 2 + 1",
+        pregunta: "¿Suma de 0 + 5?",
         img: "img/validar.png",
         respuestas: [
-          {opcion1: "1", valor: false, img: "" },
-          {opcion2: "2", valor: false, img: "" },
-          {opcion3: "3", valor: true, img: "" },
-          {opcion4: "4", valor: false, img: "" },
-          {opcion5: "5.", valor: false, img: "" }
+          {opcion: 1, valor: false, img: "" },
+          {opcion: 2, valor: false, img: "" },
+          {opcion: 3, valor: false, img: "" },
+          {opcion: 4, valor: false, img: "" },
+          {opcion: 5, valor: true, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 3 + 1",
+        pregunta: "¿Suma de 0 + 6?",
         img: "img/validar.png",
         respuestas: [
-          {opcion1: "1", valor: false, img: "" },
-          {opcion2: "2", valor: false, img: "" },
-          {opcion3: "3", valor: false, img: "" },
-          {opcion4: "4", valor: true, img: "" },
-          {opcion5: "5.", valor: false, img: "" }
+          {opcion: 6, valor: true, img: "" },
+          {opcion: 2, valor: false, img: "" },
+          {opcion: 3, valor: false, img: "" },
+          {opcion: 4, valor: false, img: "" },
+          {opcion: 5, valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 4 + 1",
+        pregunta: "¿Suma de 0 + 7?",
         img: "img/validar.png",
         respuestas: [
-          {opcion1: "1", valor: false, img: "" },
-          {opcion2: "2", valor: false, img: "" },
-          {opcion3: "3", valor: false, img: "" },
-          {opcion4: "4", valor: false, img: "" },
-          {opcion5: "5.", valor: true, img: "" }
+          {opcion: 1, valor: false, img: "" },
+          {opcion: 7, valor: true, img: "" },
+          {opcion: 3, valor: false, img: "" },
+          {opcion: 4, valor: false, img: "" },
+          {opcion: 5, valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 5 + 1",
+        pregunta: "¿Suma de 0 + 8?",
         img: "img/validar.png",
         respuestas: [
-          {opcion1: "1", valor: false, img: "" },
-          {opcion2: "2", valor: false, img: "" },
-          {opcion3: "3", valor: false, img: "" },
-          {opcion4: "4", valor: true, img: "" },
-          {opcion5: "5.", valor: false, img: "" }
+          {opcion: 1, valor: false, img: "" },
+          {opcion: 2, valor: false, img: "" },
+          {opcion: 8, valor: true, img: "" },
+          {opcion: 4, valor: false, img: "" },
+          {opcion: 5, valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 3 + 1",
+        pregunta: "¿Suma de 0 + 9?",
         img: "img/validar.png",
         respuestas: [
-          {opcion1: "6", valor: true, img: "" },
-          {opcion2: "2", valor: false, img: "" },
-          {opcion3: "3", valor: false, img: "" },
-          {opcion4: "4", valor: true, img: "" },
-          {opcion5: "5.", valor: false, img: "" }
+          {opcion: 1, valor: false, img: "" },
+          {opcion: 2, valor: false, img: "" },
+          {opcion: 3, valor: false, img: "" },
+          {opcion: 9, valor: true, img: "" },
+          {opcion: 5, valor: false, img: "" }
+        ]
+      },{
+        pregunta: "¿Suma de 0 + 10?",
+        img: "img/validar.png",
+        respuestas: [
+          {opcion: 1, valor: false, img: "" },
+          {opcion: 2, valor: false, img: "" },
+          {opcion: 3, valor: false, img: "" },
+          {opcion: 4, valor: false, img: "" },
+          {opcion: 10, valor: true, img: "" }
         ]
       }
-
     ]
   }
     
-  
   inicializar(){
     this.theWheel = new Winwheel({
       'canvasId'      : 'WinWheel',
@@ -146,7 +144,6 @@ class Juego {
     })
   }
   
-
   toggleDivAyuda(){
     if(this.divAyuda.classList.contains('hide')){
       this.divAyuda.classList.remove('hide')
@@ -174,11 +171,13 @@ class Juego {
   // This function called after the spin animation has stopped
   winPrize(){
     // call getIndicatedSegment() function to return pointer to the segment pointed to on wheel
-
-    let winSegment = juego.theWheel.getIndicatedSegmentNumber()
+    juego.winSegment = juego.theWheel.getIndicatedSegmentNumber()
 
     //Basic alert of the segment text which is the prize name
-    alert(`You have won ${winSegment}`)
+    alert(`You have won ${juego.winSegment}`)
+    juego.toggleDivPreguntas()
+    juego.generarArrayPreguntas()
+    juego.iniciarPreguntas()
   }
 
   drawImage(){
@@ -197,25 +196,49 @@ class Juego {
     juego.audio.play()
   }
 
-  generarPreguntasAleatorias(){
-    let numPreguntas = juego.preguntas.length
-
-    this.generarSecuencia(numPreguntas)
+  generarArrayPreguntas(){
+    juego.numPreguntas = juego.preguntas.length
+    juego.arrayPreguntas = []
+    for (let i=0; i < juego.numPreguntas; i++){
+      juego.arrayPreguntas.push(i)
+    }
+    juego.arrayPreguntas = juego.generarArrayAleatorio(juego.arrayPreguntas)
+    console.log(juego.arrayPreguntas)
   }
 
-  generarSecuencia(numPreguntas){
-   
-   if (!this.cache){
-    this.cahe= {}
-   }
-
-   if (this.cache[n]){
-    return this.cache[n]
-   }
-
-
+  generarArrayAleatorio(array){
+    return array.sort( () => (Math.random() - 0.5))
   }
 
+  iniciarPreguntas(){
+    console.log(juego.cantidad)
+    juego.arrayPreguntasinicio = juego.arrayPreguntas.slice(0, juego.cantidad) 
+    console.log(juego.arrayPreguntasinicio)
+    let posicion = juego.winSegment
+    console.log(posicion)
+    juego.imprimerPregunta(posicion)    
+    juego.imprimirRespuestas(posicion)
+  }
+
+  imprimerPregunta(posicion){
+    let pregunta = document.createElement("p");
+    pregunta.innerHTML = juego.preguntas[posicion].pregunta
+    document.getElementById('h3').appendChild(pregunta)
+  }
+
+  imprimirRespuestas(posicion){
+    let respuestas = juego.generarArrayAleatorio(juego.preguntas[posicion].respuestas)
+
+    for (let i=0; i < respuestas.length; i++){
+      let respuesta = document.createElement("button")     // Get the first <h1> element in the document
+      let att = document.createAttribute("class")          // Create a "class" attribute
+      att.value = 'boton_personalizado'                // Set the value of the class attribute
+      respuesta.innerHTML = respuestas[i].opcion           // Add the class attribute to <h1>
+      respuesta.setAttributeNode(att)                                  
+      document.getElementById('respuestas').appendChild(respuesta)
+    }
+
+  }
 
 }
 

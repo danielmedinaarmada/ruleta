@@ -222,6 +222,9 @@ class Juego {
 
   imprimerPregunta(posicion){
     let pregunta = document.createElement("p");
+    let att = document.createAttribute("class")          // Create a "class" attribute
+    att.value = 'pregunta'                               // Set the value of the class attribute
+    pregunta.setAttributeNode(att)                       // Set the value of the class attribute
     pregunta.innerHTML = juego.preguntas[posicion].pregunta
     document.getElementById('h3').appendChild(pregunta)
   }
@@ -232,7 +235,7 @@ class Juego {
     for (let i=0; i < respuestas.length; i++){
       let respuesta = document.createElement("button")     // Get the first <h1> element in the document
       let att = document.createAttribute("class")          // Create a "class" attribute
-      att.value = 'boton_personalizado'                // Set the value of the class attribute
+      att.value = 'boton_personalizado'                    // Set the value of the class attribute
       respuesta.innerHTML = respuestas[i].opcion           // Add the class attribute to <h1>
       respuesta.setAttributeNode(att)                                  
       document.getElementById('respuestas').appendChild(respuesta)

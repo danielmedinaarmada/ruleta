@@ -24,13 +24,14 @@ th, tr, td{
 }
 
 h1, h3 {
-  font-size: 15px;
+  font-size: 25px;
   padding-top: 10px;
 }
 
 h1, h3, ul, li, p {
   margin: 0px;
 }
+
 
 li{
   font-size: 15px;
@@ -80,7 +81,13 @@ canvas {
   padding: 5px;
 }
 
+.pregunta{
+  margin-left: 30px;
+  font-size: 20px;
+}
+
 .respuestas{
+  margin-left: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -94,7 +101,7 @@ canvas {
   background-color: #1883ba;
   border-radius: 6px;
   border: 2px solid #0016b0;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .boton_personalizado:hover{
   color: #1883ba;

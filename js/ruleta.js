@@ -222,8 +222,7 @@ class Juego {
   iniciarPreguntas(){
     //console.log(juego.cantidad)
     juego.arrayPreguntasinicio = juego.arrayPreguntas.slice(0, juego.cantidad) 
-    juego.imprimirPreguntaOpciones(0)
-    //juego.imprimirPreguntaOpciones(juego.winSegment-1)    //La rueda comienza sus pedazos con 1
+    juego.imprimirPreguntaOpciones(juego.winSegment-1)    //La rueda comienza sus pedazos con 1
   }
 
   imprimirPreguntaOpciones(posicion){
@@ -287,7 +286,7 @@ class Juego {
             //contar puntos positivos
             juego.positivo()
             //llamar a la siguiente pregunta
-            //juego.siguientePregunta()
+            juego.siguientePregunta()
             //girar la rueda
           }else {
             //Se acabo el jueego acumulaste 5 puntos positivos. deseas volver a jugar

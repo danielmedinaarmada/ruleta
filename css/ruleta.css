@@ -4,6 +4,7 @@ html, body{
 
 table{
   background: #brown ;
+  font-size: 20px;
 }
 
 th, tr, td{
@@ -11,6 +12,8 @@ th, tr, td{
   border-radius: 5px;
   background: #82E0AA ;
   text-align: center;
+  height: 15px;
+  width: 15px;
 }
 
 .hide {
@@ -106,4 +109,22 @@ canvas {
 .boton_personalizado:hover{
   color: #1883ba;
   background-color: #ffffff;
+}
+
+.cTotal {
+  -webkit-animation-name: puntos; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+  animation-name: puntos;
+  animation-duration: 6s;
+}
+
+@keyframes puntos {
+  from {
+    background-color: #0b5345 ;
+    color: white;
+  }
+  to {
+    background-color: #82E0AA;
+    color: black;
+  }
 }

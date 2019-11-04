@@ -2,8 +2,9 @@ class Juego {
 
   constructor(){
     this.cantidad = 5
+    this.preguntasRealizadas = 1
     this.puntosPositivos =  0
-    this.puntosNegativos =  1
+    this.puntosNegativos =  0
     this.rondas = 5
     this.divAyuda = document.getElementById('ayuda')
     this.divPreguntas = document.getElementById('preguntas')
@@ -125,11 +126,11 @@ class Juego {
       'outerRadius'   : 200,
       'responsive'   : true,  // This wheel is responsive!
       'segments'      : [
-        { 'fillStyle' : '#FFFF00', 'text' : 'Pregunta 1' },
-        { 'fillStyle' : '#6600FF', 'text' : 'Pregunta 2' },
-        { 'fillStyle' : '#FF6600', 'text' : 'Pregunta 3' },
-        { 'fillStyle' : '#66CC00', 'text' : 'Pregunta 4' },
-        { 'fillStyle' : '#CC3300', 'text' : 'Pregunta 5' }
+        { 'fillStyle' : '#FFFF00', 'text' : 'Pregunta' },
+        { 'fillStyle' : '#6600FF', 'text' : 'Pregunta' },
+        { 'fillStyle' : '#FF6600', 'text' : 'Pregunta' },
+        { 'fillStyle' : '#66CC00', 'text' : 'Pregunta' },
+        { 'fillStyle' : '#CC3300', 'text' : 'Pregunta' }
       ],
       'animation': {
         'type'          : 'spinToStop',
@@ -172,29 +173,6 @@ class Juego {
     }
   }
 
-  // This function called after the spin animation has stopped
-  winPrize(){
-    // call getIndicatedSegment() function to return pointer to the segment pointed to on wheel
-    juego.winSegment = juego.theWheel.getIndicatedSegmentNumber()
-
-    //Basic alert of the segment text which is the prize name
-    Swal.fire({
-      title: `Demuestra tus conocimientos. Su pregunta es la número: ${juego.winSegment}`,
-      showConfirmButton: false,
-      imageUrl: 'img/conocimiento.png',
-      imageWidth: 300,
-      imageHeight: 300,
-      imageAlt: 'Custom image',
-      position: 'center',
-      timer: 3000,
-    })
-
-    //alert(`You have won ${juego.winSegment}`)
-    juego.toggleDivPreguntas()
-    juego.generarArrayPreguntas()
-    juego.iniciarPreguntas()
-  }
-
   drawImage(){
     //alert('prueba')
     let canvas = document.getElementById('WinWheel')
@@ -211,6 +189,29 @@ class Juego {
     juego.audio.play()
   }
 
+  // This function called after the spin animation has stopped
+  winPrize(){
+    // call getIndicatedSegment() function to return pointer to the segment pointed to on wheel
+    juego.winSegment = juego.theWheel.getIndicatedSegmentNumber()
+    juego.saludoPregunta()
+    juego.generarArrayPreguntas()
+    juego.iniciarPreguntas()
+  }
+
+  saludoPregunta(){
+    //Basic alert of the segment text which is the prize name
+    Swal.fire({
+      title: `Demuestra tus conocimientos. Pregunta número: ${this.preguntasRealizadas}`,
+      showConfirmButton: false,
+      imageUrl: 'img/conocimiento.png',
+      imageWidth: 300,
+      imageHeight: 300,
+      imageAlt: 'Custom image',
+      position: 'center',
+      timer: 3000,
+    })
+  }
+
   generarArrayPreguntas(){
     juego.arrayPreguntas = juego.generarArrayAleatorio(juego.preguntas)
   }
@@ -221,12 +222,15 @@ class Juego {
 
   iniciarPreguntas(){
     //console.log(juego.cantidad)
+    juego.toggleDivPreguntas()
     juego.arrayPreguntasinicio = juego.arrayPreguntas.slice(0, juego.cantidad) 
-    juego.imprimirPreguntaOpciones(juego.winSegment-1)    //La rueda comienza sus pedazos con 1
+    juego.imprimirPreguntaOpciones()    //La rueda comienza sus pedazos con 1
   }
 
-  imprimirPreguntaOpciones(posicion){
+  imprimirPreguntaOpciones(){
+    debugger
     //Pregunta
+    const posicion = juego.winSegment-1
     let pregunta = document.createElement("p");
     let att = document.createAttribute("class")          // Create a "class" attribute
     att.value = 'pregunta'                               // Set the value of the class attribute
@@ -237,7 +241,8 @@ class Juego {
     //Opciones de Respuestas
     juego.respuestas = juego.generarArrayAleatorio(juego.arrayPreguntasinicio[posicion].respuestas)
     for (let i=0; i < juego.respuestas.length; i++){
-      let respuesta = document.createElement("button")     // Get the first <h1> element in the document
+      debugger
+      const respuesta = document.createElement("button")     // Get the first <h1> element in the document
       let att = document.createAttribute("class")          // Create a "class" attribute
       att.value = 'boton_personalizado'                    // Set the value of the class attribute
       respuesta.setAttributeNode(att)
@@ -314,7 +319,7 @@ class Juego {
   }
 
   positivo(){
-    debugger
+    juego.preguntasRealizadas++
     juego.puntosPositivos++
     let ctotal = document.getElementById('cTotal')
     ctotal.innerHTML = juego.puntosPositivos
@@ -323,9 +328,38 @@ class Juego {
     ctotal.setAttributeNode(att)
   }
 
-  siguientePregunta(){
-    
+  negativos(){
+    juego.preguntasRealizadas++
+    juego.puntosNegativos++
+    let itotal = document.getElementById('iTotal')
+    itotal.innerHTML = juego.puntosNegativos
+    let att = document.createAttribute("class")          // Create a "class" attribute
+    att.value = 'iTotal'                    // Set the value of the class attribute
+    itotal.setAttributeNode(att)
   }
+
+
+  siguientePregunta(){
+    juego.theWheel.stopAnimation(false)
+    juego.theWheel.rotationAngle=0
+    juego.theWheel.draw()
+    juego.theWheel.drawImage()
+    juego.theWheel.startAnimation()
+    debugger
+    juego.siguienteRespuesta()
+  }
+
+  siguienteRespuesta(){
+    debugger
+    juego.winSegment = juego.theWheel.getIndicatedSegmentNumber()
+    debugger
+    juego.saludoPregunta()
+    debugger
+    juego.imprimirPreguntaOpciones()
+    debugger
+  }
+
+
 
   addSegment(colorPosicion){
     let color = ['#D8F781', '#81F7F3', '#FF0000', '#64FE2E', '#0174DF' ]
@@ -344,8 +378,9 @@ class Juego {
 
   removeListener(clickCount){
     for (let i=0; i < juego.respuestas.length; i++){
-      let respuesta = document.getElementById(`opcion${i}`)
-      respuesta.removeEventListener('click', this.respuesta)
+      const respuesta = document.getElementById(`opcion${i}`)
+      respuesta.parentNode.removeChild(respuesta)
+      //respuesta.removeEventListener('click', this.respuesta)
     }
   }
 

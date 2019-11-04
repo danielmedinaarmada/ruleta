@@ -120,8 +120,8 @@ canvas {
 
 @keyframes puntos {
   from {
-    background-color: #0b5345 ;
-    color: white;
+    background-color: #FFFF00 ;
+    color: black;
   }
   to {
     background-color: #82E0AA;

@@ -193,14 +193,6 @@ class Juego {
     juego.audio.play()
   }
 
-  // This function called after the spin animation has stopped
-  winPrize(){
-    // call getIndicatedSegment() function to return pointer to the segment pointed to on wheel
-    juego.winSegment = juego.theWheel.getIndicatedSegmentNumber()
-    juego.saludoPregunta()
-    juego.iniciarPreguntas()
-  }
-
   generarArrayAleatorio(array){
     return array.sort(() => (Math.random() - 0.5))
   }
@@ -208,6 +200,14 @@ class Juego {
   generarArrayPreguntas(){
     this.arrayPreguntas = this.generarArrayAleatorio(this.preguntas)
   }
+
+  // This function called after the spin animation has stopped
+  winPrize(){
+    // call getIndicatedSegment() function to return pointer to the segment pointed to on wheel
+    juego.winSegment = juego.theWheel.getIndicatedSegmentNumber()
+    juego.siguientePregunta()
+  }
+
 
   saludoPregunta(){
     //Basic alert of the segment text which is the prize name
@@ -223,19 +223,20 @@ class Juego {
     })
   }
 
-  iniciarPreguntas(){
-    //console.log(juego.cantidad)
-    juego.toggleDivPreguntas()
-    juego.imprimirPreguntaOpciones()    //La rueda comienza sus pedazos con 1
-  }
-
-  imprimirPreguntaOpciones(){
+  siguientePregunta(){
+    juego.saludoPregunta()
     //Pregunta
+    juego.toggleDivPreguntas()
     const posicion = juego.winSegment-1
-    let pregunta = document.createElement("p");
+    const pregunta = document.createElement("p");
     let att = document.createAttribute("class")          // Create a "class" attribute
     att.value = 'pregunta'                               // Set the value of the class attribute
-    pregunta.setAttributeNode(att)                       // Set the value of the class attribute
+    pregunta.setAttributeNode(att)
+
+    att = document.createAttribute("id") 
+    att.value = `pregunta${posicion}`
+    pregunta.setAttributeNode(att)
+                           // Set the value of the class attribute
     pregunta.innerHTML = this.arrayPreguntasinicio[posicion].pregunta
     document.getElementById('h3').appendChild(pregunta)
     
@@ -290,8 +291,8 @@ class Juego {
             juego.removeListener()
             //contar puntos positivos
             juego.positivo()
-            //llamar a la siguiente pregunta
-            juego.siguientePregunta()
+            //animation
+            juego.animacion() //Aqu se hace la siguiente pregunta
             //girar la rueda
           }else {
             //Se acabo el jueego acumulaste 5 puntos positivos. deseas volver a jugar
@@ -315,7 +316,6 @@ class Juego {
         }
       }
     })
-   
   }
 
   positivo(){
@@ -338,22 +338,13 @@ class Juego {
     itotal.setAttributeNode(att)
   }
 
-
-  siguientePregunta(){
+  animacion(){
     juego.theWheel.stopAnimation(false)
     juego.theWheel.rotationAngle=0
     juego.theWheel.draw()
     juego.theWheel.drawImage
     juego.theWheel.startAnimation()
-    juego.siguienteRespuesta()
   }
-
-  siguienteRespuesta(){
-    juego.winSegment = juego.theWheel.getIndicatedSegmentNumber()
-    juego.imprimirPreguntaOpciones()
-  }
-
-
 
   addSegment(colorPosicion){
     let color = ['#D8F781', '#81F7F3', '#FF0000', '#64FE2E', '#0174DF' ]
@@ -370,12 +361,29 @@ class Juego {
   }
 
 
-  removeListener(clickCount){
-    for (let i=0; i < juego.respuestas.length; i++){
-      const respuesta = document.getElementById(`opcion${i}`)
+  removeListener(){
+    const pregunta = document.getElementById("h3");
+
+    // As long as <ul> has a child node, remove it
+    while (pregunta.hasChildNodes()) {  
+      console.log(pregunta)
+      pregunta.removeChild(pregunta.firstChild);
+    } 
+
+    const respuestas = document.getElementById("respuestas");
+
+    // As long as <ul> has a child node, remove it
+    while (respuestas.hasChildNodes()) {  
+      console.log(respuestas)
+      respuestas.removeChild(respuestas.firstChild);
+    } 
+
+
+/*    for (let i=0; i < juego.respuestas.length; i++){
+      let respuesta = document.getElementById(`opcion${i}`)
       respuesta.parentNode.removeChild(respuesta)
       //respuesta.removeEventListener('click', this.respuesta)
-    }
+    }*/
   }
 
 

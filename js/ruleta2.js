@@ -2,7 +2,7 @@ class Juego {
 
   constructor(){
     this.cantidad = 5
-    this.preguntasRealizadas = 1
+    this.preguntasRealizadas = 0
     this.puntosPositivos =  0
     this.puntosNegativos =  0
     this.rondas = 5
@@ -130,11 +130,11 @@ class Juego {
       'outerRadius'   : 200,
       'responsive'   : true,  // This wheel is responsive!
       'segments'      : [
-        { 'fillStyle' : '#FFFF00', 'text' : 'Pregunta' },
-        { 'fillStyle' : '#6600FF', 'text' : 'Pregunta' },
-        { 'fillStyle' : '#FF6600', 'text' : 'Pregunta' },
-        { 'fillStyle' : '#66CC00', 'text' : 'Pregunta' },
-        { 'fillStyle' : '#CC3300', 'text' : 'Pregunta' }
+        { 'fillStyle' : '#FFFF00', 'text' : 'Pregunta 1' },
+        { 'fillStyle' : '#6600FF', 'text' : 'Pregunta 2' },
+        { 'fillStyle' : '#FF6600', 'text' : 'Pregunta 3' },
+        { 'fillStyle' : '#66CC00', 'text' : 'Pregunta 4' },
+        { 'fillStyle' : '#CC3300', 'text' : 'Pregunta 5' }
       ],
       'animation': {
         'type'          : 'spinToStop',
@@ -154,11 +154,11 @@ class Juego {
   }
   
   toggleDivAyuda(){
-    if(this.divAyuda.classList.contains('hide')){
-      this.divAyuda.classList.remove('hide')
-    }else{
-      this.divAyuda.classList.add('hide')
-    }
+      if(this.divAyuda.classList.contains('hide')){
+        this.divAyuda.classList.remove('hide')
+      }else{
+        this.divAyuda.classList.add('hide')
+      }
   }
 
   toggleDivPreguntas(){
@@ -212,7 +212,7 @@ class Juego {
   saludoPregunta(){
     //Basic alert of the segment text which is the prize name
     Swal.fire({
-      title: `Demuestra tus conocimientos. Pregunta número: ${this.preguntasRealizadas}`,
+      title: `Demuestra tus conocimientos. Pregunta número: ${this.preguntasRealizadas + 1}`,
       showConfirmButton: false,
       imageUrl: 'img/conocimiento.png',
       imageWidth: 300,
@@ -222,6 +222,49 @@ class Juego {
       timer: 3000,
     })
   }
+
+  saludoGanaste(){
+    //Basic alert of the segment text which is the prize name
+    Swal.fire({
+      title: `Felicitaciones. Alcanzaste una efectividad: ${((juego.puntosPositivos/this.preguntasRealizadas )*100).toFixed(2)}%. Deseas iniciar una nueva practica.`,
+      showConfirmButton: true,
+      showCancelButton: true,
+      imageUrl: 'img/ganaste.png',
+      imageWidth: 300,
+      imageHeight: 300,
+      imageAlt: 'Custom image',
+      position: 'center',
+    }).then((result) => {
+        if (result.value) {
+          empezarJuego()
+          this.toggleDivAyuda()
+          this.toggleDivPreguntas()
+          this.toggleDivPuntos()
+       }
+    })
+  }
+
+  saludoPerdiste(){
+    //Basic alert of the segment text which is the prize name
+    Swal.fire({
+      title: `Debes repasar la documentación del producto y hacer nuevamente la practica. No te desmotives, hiciste lo mas difícil, estas aquí. Alcanzaste una efectividad de: ${((juego.puntosPositivos/this.preguntasRealizadas)*100).toFixed(2)}%. Deseas iniciar una nueva practica.`,
+      showConfirmButton: true,
+      showCancelButton: true,
+      imageUrl: 'img/perdiste.png',
+      imageWidth: 300,
+      imageHeight: 300,
+      imageAlt: 'Custom image',
+      position: 'center',
+    }).then((result) => {
+        if (result.value) {
+          empezarJuego()
+          this.toggleDivAyuda()
+          this.toggleDivPreguntas()
+          this.toggleDivPuntos()          
+       }
+    })
+  }
+
 
   siguientePregunta(){
     juego.saludoPregunta()
@@ -287,13 +330,22 @@ class Juego {
             juego.deleteSegment()
             // quitar pregunta del array
             juego.preguntaRemoved = juego.arrayPreguntasinicio.splice(posicion, 1)
+            console.log('Gano')
+            console.log(juego.arrayPreguntasinicio)
             //quitar el listener
             juego.removeListener()
             //contar puntos positivos
             juego.positivo()
-            //animation
-            juego.animacion() //Aqu se hace la siguiente pregunta
-            //girar la rueda
+            //validar preguntas
+            if (juego.puntosPositivos < 5) {
+             //Ocultar Preguntas
+              juego.toggleDivPreguntas()
+              //animation
+              juego.animacion() //Aqu se hace la siguiente pregunta
+              //girar la rueda
+            }else {
+              juego.saludoGanaste()
+            }
           }else {
             //Se acabo el jueego acumulaste 5 puntos positivos. deseas volver a jugar
           }
@@ -302,13 +354,25 @@ class Juego {
           if (juego.puntosNegativos < juego.rondas){
             //Perdiste
             //sumar una parte de na rueda y una pregunta en el array
-            //this.addSegment(posicion)
-            //this.cantidad = this.cantidad + 1
-            //juego.arrayPreguntasinicio.push(juego.preguntas[this.cantidad])
-
-            //contar puntos negativos
+            juego.addSegment(juego.puntosNegativos)
+            //Anadir una pregunta en el Array
+            juego.arrayPreguntasinicio.push(juego.arrayPreguntas[this.cantidad + juego.puntosNegativos])
+            console.log('Perdio')
+            console.log(juego.arrayPreguntasinicio)
             //quitar el listener
-            //girar la rueda
+            juego.removeListener()
+             //contar puntos positivos
+            juego.negativo()
+            //validar preguntas
+            if (juego.puntosNegativos < 5) {
+             //Ocultar Preguntas
+              juego.toggleDivPreguntas()
+              //animation
+              juego.animacion() //Aqu se hace la siguiente pregunta
+              //girar la rueda
+            }else {
+              juego.saludoPerdiste()
+            }
             //llamar a la siguiente pregunta
           } else {
             // Perdiste acumulaste 5 puntos negativos
@@ -326,9 +390,12 @@ class Juego {
     let att = document.createAttribute("class")          // Create a "class" attribute
     att.value = 'cTotal'                    // Set the value of the class attribute
     ctotal.setAttributeNode(att)
+    setTimeout(()=>{
+      ctotal.classList.remove('cTotal')
+    },3000)
   }
 
-  negativos(){
+  negativo(){
     juego.preguntasRealizadas++
     juego.puntosNegativos++
     let itotal = document.getElementById('iTotal')
@@ -336,6 +403,9 @@ class Juego {
     let att = document.createAttribute("class")          // Create a "class" attribute
     att.value = 'iTotal'                    // Set the value of the class attribute
     itotal.setAttributeNode(att)
+    setTimeout(()=>{
+      itotal.classList.remove('iTotal')
+    },3000)
   }
 
   animacion(){
@@ -349,10 +419,11 @@ class Juego {
   addSegment(colorPosicion){
     let color = ['#D8F781', '#81F7F3', '#FF0000', '#64FE2E', '#0174DF' ]
     juego.theWheel.addSegment({
-      'text': '',
+      'text': `Pregunta ${this.cantidad + juego.puntosNegativos + 1}`,
       'fillStyle' : color[colorPosicion]
     });
     juego.theWheel.draw()
+    juego.theWheel.drawImage
   }
 
   deleteSegment(){

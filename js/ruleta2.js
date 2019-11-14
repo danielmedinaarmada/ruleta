@@ -212,7 +212,7 @@ class Juego {
   saludoPregunta(){
     //Basic alert of the segment text which is the prize name
     Swal.fire({
-      title: `Demuestra tus conocimientos. Pregunta número: ${this.preguntasRealizadas + 1}`,
+      title: `${this.preguntasRealizadas+1}${this.numerosOrdinales(this.preguntasRealizadas+1)} Pregunta.\nDemuestra tus conocimientos.\n ${juego.theWheel.segments[juego.winSegment].text}`,
       showConfirmButton: false,
       imageUrl: 'img/conocimiento.png',
       imageWidth: 300,
@@ -223,10 +223,45 @@ class Juego {
     })
   }
 
+  numerosOrdinales(numero){
+    switch(numero){
+      case 1:
+        return "ra"
+        break
+      case 2:
+        return "da"
+        break
+      case 3:
+        return "ra"
+        break
+      case 4:
+        return "ta"
+        break
+      case 5:
+        return "ta"
+        break  
+      case 6:
+        return "ta"
+        break
+      case 7:
+        return "ma"
+        break
+      case 8:
+        return "va"
+        break
+      case 9:
+        return "na"
+        break
+      case 10:
+        return "ma"
+        break
+    }
+  }
+
   saludoGanaste(){
     //Basic alert of the segment text which is the prize name
     Swal.fire({
-      title: `Felicitaciones. Alcanzaste una efectividad: ${((juego.puntosPositivos/this.preguntasRealizadas )*100).toFixed(2)}%. Deseas iniciar una nueva practica.`,
+      title: `Felicitaciones.\nAlcanzaste una efectividad: ${((juego.puntosPositivos/this.preguntasRealizadas )*100).toFixed(2)}%.\nDeseas iniciar una nueva practica.`,
       showConfirmButton: true,
       showCancelButton: true,
       imageUrl: 'img/ganaste.png',
@@ -237,6 +272,7 @@ class Juego {
     }).then((result) => {
         if (result.value) {
           empezarJuego()
+          this.iniciarTotales()
           this.toggleDivAyuda()
           this.toggleDivPreguntas()
           this.toggleDivPuntos()
@@ -247,7 +283,7 @@ class Juego {
   saludoPerdiste(){
     //Basic alert of the segment text which is the prize name
     Swal.fire({
-      title: `Debes repasar la documentación del producto y hacer nuevamente la practica. No te desmotives, hiciste lo mas difícil, estas aquí. Alcanzaste una efectividad de: ${((juego.puntosPositivos/this.preguntasRealizadas)*100).toFixed(2)}%. Deseas iniciar una nueva practica.`,
+      title: `Debes repasar la documentación del producto y hacer nuevamente la practica. No te desmotives, hiciste lo mas difícil, estas aquí.\nAlcanzaste una efectividad de: ${((juego.puntosPositivos/this.preguntasRealizadas)*100).toFixed(2)}%.\nDeseas iniciar una nueva practica.`,
       showConfirmButton: true,
       showCancelButton: true,
       imageUrl: 'img/perdiste.png',
@@ -258,6 +294,7 @@ class Juego {
     }).then((result) => {
         if (result.value) {
           empezarJuego()
+          this.iniciarTotales()
           this.toggleDivAyuda()
           this.toggleDivPreguntas()
           this.toggleDivPuntos()          
@@ -356,7 +393,7 @@ class Juego {
             //sumar una parte de na rueda y una pregunta en el array
             juego.addSegment(juego.puntosNegativos)
             //Anadir una pregunta en el Array
-            juego.arrayPreguntasinicio.push(juego.arrayPreguntas[this.cantidad + juego.puntosNegativos])
+            juego.arrayPreguntasinicio.push(juego.arrayPreguntas[juego.cantidad + juego.puntosNegativos])
             console.log('Perdio')
             console.log(juego.arrayPreguntasinicio)
             //quitar el listener
@@ -431,6 +468,15 @@ class Juego {
     juego.theWheel.draw()
   }
 
+
+  iniciarTotales(){
+    let cTotal = document.getElementById("cTotal");
+    let iTotal = document.getElementById("iTotal");
+
+    cTotal.innerHTML = "0"
+    iTotal.innerHTML = "0"
+
+  }
 
   removeListener(){
     const pregunta = document.getElementById("h3");

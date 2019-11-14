@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ruleta - Accidentes Personales</title>
+  <script src="js/Winwheel.min.js"></script>
+  <script src="js/TweenMax.min.js"></script>
+  <script src="js/sweetalert2.all.min.js"></script>
+  <script src='js/ruleta2.js'></script>
+  <link rel="stylesheet" type="text/css" href="css/ruleta.css">
+</head>
+<body>
+  
+  <div class='title'>
+    <img class='logo' src="http://farm9.staticflickr.com/8118/8691670535_fb71901f0a.jpg">
+  </div>
+
+  <div class='ruleta'>
+
+    <div class='left'>
+      <h1>Ruleta para Accidentes Personales.</h1>
+      <canvas id='WinWheel' height="512" width="512" data-responsiveMinWidth="180" data-responsiveScaleHeight="true" data-responsiveMargin="50">
+        Canvas not supported, use another browser.
+      </canvas>
+    
+      <div id='ayuda' class='ayuda'>
+        <h2>Reglas:</h2>
+        <ul>
+          <li>Una vez le de click al botón, "Empezar a Jugar", la rueda girará y realizará una pregunta.</li>
+          <li>Por cada pregunta que responda de forma correcta sumaras puntos positivos.</li>
+          <li>Por cada pregunta que responda de forma incorrecta sumaras puntos negativos.</li>
+          <li>Luego de que respondas cada pregunta, la rueda gira automaticamente.</li>
+          <li>Con 5 preguntas respondidas correctamente ganas.</li>
+          <li>Con 5 preguntas respondidas incorrectamente debes repasar el material del curso.</li>
+          <li>Acepte el reto y complete las 5 respuetas positivas.</li>
+        </ul>
+        <br>
+        <button type='button' id='btnEmpezar' value='Girar' onclick="empezarJuego();">Empezar a Jugar</button>
+      </div>
+
+    </div>
+
+    <div class='right'>
+
+
+
+      <div id='puntos' class='puntos hide'>
+        <h2>Puntos:</h2>
+
+        <table id="Marcador">
+          <tr>
+            <th>Puntos</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <td>Correctas</td>
+            <td id="cTotal">0</td>
+          </tr>
+          <tr>
+            <td>Incorrectas</td>
+            <td id="iTotal">0</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id='preguntas' class='preguntas hide'>
+        <h2>Pregunta:</h2>
+        <span id="h3"></span>
+        <h2>Seleccione su respuesta:</h2>
+        <div id='respuestas' class="respuestas">
+          
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  
+</body>
+</html>

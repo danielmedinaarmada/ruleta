@@ -16,104 +16,111 @@ class Juego {
     this.audio = new Audio("audios/tick.mp3")
     this.preguntas = [
       {
-        pregunta: "¿Suma de 0 + 1?",
+        pregunta: "La póliza de Mercantil Seguros de Accidentes Personales, es una póliza de:",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '6', valor: false, img: "" },
-          {opcion: 1, texto: '2',valor: false, img: "" },
-          {opcion: 2, texto: '1',valor: true, img: "" },
-          {opcion: 3, texto: '4',valor: false, img: "" },
-          {opcion: 4, texto: '5',valor: false, img: "" }
+          {opcion: 0, texto: 'Familiar', valor: false, img: "" },
+          {opcion: 1, texto: 'Colectiva',valor: false, img: "" },
+          {opcion: 2, texto: 'Individual',valor: true, img: "" },
+          {opcion: 3, texto: 'Corporativa',valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 0 + 2?",
+        pregunta: "Un Accidente es:",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '1', valor: false, img: "" },
-          {opcion: 1, texto: '2', valor: true, img: "" },
-          {opcion: 2, texto: '3', valor: false, img: "" },
-          {opcion: 3, texto: '4', valor: false, img: "" },
-          {opcion: 4, texto: '5', valor: false, img: "" }
+          {opcion: 0, texto: 'Algo que hice con intención', valor: false, img: "" },
+          {opcion: 1, texto: 'Algo inesperado', valor: true, img: "" },
+          {opcion: 2, texto: 'Algo cercano a mi voluntad', valor: false, img: "" },
+          {opcion: 3, texto: 'Algo que estaba esperando', valor: false, img: "" },
+          {opcion: 4, texto: 'Algo obligado', valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 0 + 3?",
+        pregunta: "Cual de las siguientes opciones NO es una cobertura de la póliza de accidentes personales",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '4', valor: false, img: "" },
-          {opcion: 1, texto: '2', valor: false, img: "" },
-          {opcion: 2, texto: '3', valor: true, img: "" },
-          {opcion: 3, texto: '1', valor: false, img: "" },
-          {opcion: 4, texto: '5', valor: false, img: "" }
+          {opcion: 0, texto: 'Hospitalización', valor: true, img: "" },
+          {opcion: 1, texto: 'Muerte Accidental', valor: false, img: "" },
+          {opcion: 2, texto: 'Maternidad', valor: true, img: "" },
+          {opcion: 3, texto: 'Invalidez total y permanente', valor: false, img: "" },
+          {opcion: 4, texto: 'Cirugía', valor: true, img: "" },
+          {opcion: 5, texto: 'Gastos Médicos', valor: false, img: "" },
+          {opcion: 6, texto: 'Cancer', valor: true, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 0 + 4?",
+        pregunta: "Identifique que grupo de edad no permiten la suscripción",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '1', valor: false, img: "" },
-          {opcion: 1, texto: '2', valor: false, img: "" },
-          {opcion: 2, texto: '3', valor: false, img: "" },
-          {opcion: 3, texto: '4', valor: true, img: "" },
-          {opcion: 4, texto: '5', valor: false, img: "" }
+          {opcion: 0, texto: 'Entre 22 a 44 años', valor: false, img: "" },
+          {opcion: 1, texto: 'Entre 01 a 18 años', valor: true, img: "" },
+          {opcion: 2, texto: 'Entre 18 a 64 años', valor: false, img: "" },
+          {opcion: 3, texto: 'Entre 35 a 55 años', valor: false, img: "" },
+          {opcion: 4, texto: 'Entre 65 a 99 años', valor: true, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 0 + 5?",
+        pregunta: "¿Que medio de pago es valido, para el pago de la póliza de AP?",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '1', valor: false, img: "" },
-          {opcion: 1, texto: '4', valor: false, img: "" },
-          {opcion: 2, texto: '3', valor: false, img: "" },
-          {opcion: 3, texto: '2', valor: false, img: "" },
-          {opcion: 4, texto: '5', valor: true, img: "" }
+          {opcion: 0, texto: 'Tarjeta de Crédito American Express 375987654321001', valor: false, img: "" },
+          {opcion: 1, texto: 'Tarjeta de Débito Banco Mercantil 50187820002434521', valor: false, img: "" },
+          {opcion: 2, texto: 'Tarjeta de Crédito Banco Mercantil 5412454325242976', valor: true, img: "" },
+          {opcion: 3, texto: 'Cuenta de Ahorro Conjunta del Banco Venezuela 01020022625121232342', valor: false, img: "" },
+          {opcion: 4, texto: 'Cuenta de Ahorro Banco de Venezueka 01021234321212346543', valor: true, img: "" },
+          {opcion: 5, texto: 'Tarjeta Súper Efectiva del BNC ', valor: false, img: "" },
+          {opcion: 6, texto: 'Cédula del Buen Vivir', valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 0 + 6?",
+        pregunta: "Cual de los siguientes eventos es excluido de la póliza de Accidentes Personales de Mercantil Seguros",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '6', valor: true, img: "" },
-          {opcion: 1, texto: '2', valor: false, img: "" },
-          {opcion: 2, texto: '3', valor: false, img: "" },
-          {opcion: 3, texto: '4', valor: false, img: "" },
-          {opcion: 4, texto: '5', valor: false, img: "" }
+          {opcion: 0, texto: 'Me cai bajando las escaleras', valor: false, img: "" },
+          {opcion: 1, texto: 'Me caí en una fiesta por estar borracho', valor: true, img: "" },
+          {opcion: 2, texto: 'Me caí saliendo del baño', valor: false, img: "" },
+          {opcion: 3, texto: 'Me queme el brazo cocinando', valor: false, img: "" },
+          {opcion: 4, texto: 'Me caí entrando al automercado', valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 0 + 7?",
+        pregunta: "Que profesiones son candidatas para afiliar en Accidentes Personales de Mercantil Seguros",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '1', valor: false, img: "" },
-          {opcion: 1, texto: '7', valor: true, img: "" },
-          {opcion: 2, texto: '3', valor: false, img: "" },
-          {opcion: 3, texto: '4', valor: false, img: "" },
-          {opcion: 4, texto: '5', valor: false, img: "" }
+          {opcion: 0, texto: 'Policías', valor: false, img: "" },
+          {opcion: 1, texto: 'Maestro', valor: true, img: "" },
+          {opcion: 2, texto: 'Bomberos', valor: false, img: "" },
+          {opcion: 3, texto: 'Militares', valor: false, img: "" },
+          {opcion: 4, texto: 'Deportistas extremos', valor: false, img: "" },
+          {opcion: 5, texto: 'Personas con discapacidad', valor: false, img: "" },
+          {opcion: 6, texto: 'Diabetes', valor: false, img: "" },
+          {opcion: 7, texto: 'Enfermedades terminales', valor: false, img: "" },
+          {opcion: 8, texto: 'Piloto de Avion', valor: false, img: "" },
+          {opcion: 9, texto: 'Ingeniero', valor: true, img: "" },
+
         ]
       },{
-        pregunta: "¿Suma de 0 + 8?",
+        pregunta: "Cual de las siguientes opciones SI es una cobertura de la póliza de accidentes personales",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '1', valor: false, img: "" },
-          {opcion: 1, texto: '2', valor: false, img: "" },
-          {opcion: 2, texto: '8', valor: true, img: "" },
-          {opcion: 3, texto: '4', valor: false, img: "" },
-          {opcion: 4, texto: '5', valor: false, img: "" }
+          {opcion: 0, texto: 'Hospitalización', valor: false, img: "" },
+          {opcion: 1, texto: 'Muerte Accidental', valor: true, img: "" },
+          {opcion: 2, texto: 'Maternidad', valor: false, img: "" },
+          {opcion: 3, texto: 'Invalidez total y permanente', valor: true, img: "" },
+          {opcion: 4, texto: 'Cirugía', valor: false, img: "" },
+          {opcion: 5, texto: 'Gastos Médicos', valor: true, img: "" },
+          {opcion: 6, texto: 'Cancer', valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 0 + 9?",
+        pregunta: "En una póliza de Accidentes Personales el Tomador puede ser Asegurado",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '1', valor: false, img: "" },
-          {opcion: 1, texto: '2', valor: false, img: "" },
-          {opcion: 2, texto: '3', valor: false, img: "" },
-          {opcion: 3, texto: '9', valor: true, img: "" },
-          {opcion: 4, texto: '5', valor: false, img: "" }
+          {opcion: 0, texto: 'Sí', valor: true, img: "" },
+          {opcion: 1, texto: 'No', valor: false, img: "" }
         ]
       },{
-        pregunta: "¿Suma de 0 + 10?",
+        pregunta: "En el medio de pago que debo validar",
         img: "img/validar.png",
         respuestas: [
-          {opcion: 0, texto: '1', valor: false, img: "" },
-          {opcion: 1, texto: '8', valor: false, img: "" },
-          {opcion: 2, texto: '9', valor: false, img: "" },
-          {opcion: 3, texto: '5', valor: false, img: "" },
-          {opcion: 4, texto: '10', valor: true, img: "" }
+          {opcion: 0, texto: 'Que no lo tenga', valor: false, img: "" },
+          {opcion: 1, texto: 'Que este activo, tenga saldo y sea el titular', valor: false, img: "" },
+          {opcion: 2, texto: 'Que no lo use', valor: false, img: "" },
+          {opcion: 3, texto: 'Que este suspendido', valor: false, img: "" }
         ]
       }
     ]

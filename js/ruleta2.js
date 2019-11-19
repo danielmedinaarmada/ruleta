@@ -118,7 +118,7 @@ class Juego {
         img: "img/validar.png",
         respuestas: [
           {opcion: 0, texto: 'Que no lo tenga', valor: false, img: "" },
-          {opcion: 1, texto: 'Que este activo, tenga saldo y sea el titular', valor: false, img: "" },
+          {opcion: 1, texto: 'Que este activo, tenga saldo y sea el titular', valor: true, img: "" },
           {opcion: 2, texto: 'Que no lo use', valor: false, img: "" },
           {opcion: 3, texto: 'Que este suspendido', valor: false, img: "" }
         ]
